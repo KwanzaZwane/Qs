@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="ctosurvey-001-site1" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\ABSA391\\documents\\visual\ studio\ 2017\\Projects\\Qs\\Qs\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\ABSA391\\documents\\visual\ studio\ 2017\\Projects\\Qs\\Qs\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="QsContext-Web.config Connection String" description="" value="Data Source=SQL6003.myASP.NET;Initial Catalog=DB_A2A1E8_QsDb;User ID=DB_A2A1E8_QsDb_admin;Password=Hackathon1;Application Name=EntityFramework" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\ABSA391\\documents\\visual\ studio\ 2017\\Projects\\Qs\\Qs\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='QsContext']/@connectionString" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="" value="Data Source=SQL6003.myASP.NET;Initial Catalog=DB_A2A1E8_QsDb;User ID=DB_A2A1E8_QsDb_admin;Password=Hackathon1;Application Name=EntityFramework" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\ABSA391\\documents\\visual\ studio\ 2017\\Projects\\Qs\\Qs\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+</parameters>

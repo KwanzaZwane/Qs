@@ -1,0 +1,66 @@
+﻿@model Qs.Models.Ticket
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Ticket</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AspNetUser.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FunctionType.FunctionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FunctionType.FunctionName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TicketNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TicketNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateTimeIssued)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateTimeIssued)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateTimeHelped)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateTimeHelped)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateTimeEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateTimeEnd)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
