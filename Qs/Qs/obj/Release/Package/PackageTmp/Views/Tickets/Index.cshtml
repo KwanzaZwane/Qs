@@ -9,6 +9,11 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+<a class="btn btn-success" href="@Url.Action("TicketScreen","Tickets", new {functionType = "Consultants" })">Consultants</a>
+<a class="btn btn-success" href="@Url.Action("TicketScreen","Tickets", new {functionType = "Enquiries" })">Enquiries</a>
+<a class="btn btn-success" href="@Url.Action("TicketScreen","Tickets", new {functionType = "Tellers" })">Tellers</a>
+
 <table class="table">
     <tr>
         <th>
@@ -28,28 +33,34 @@
         </th>
         <th></th>
     </tr>
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FunctionType.FunctionName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TicketNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateTimeIssued)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateTimeHelped)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateTimeEnd)
-        </td>
-        <td>
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FunctionType.FunctionName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTimeIssued)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTimeHelped)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTimeEnd)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
 
-</table>
+        </tr>
+    }
+
+
+
+
+
+
