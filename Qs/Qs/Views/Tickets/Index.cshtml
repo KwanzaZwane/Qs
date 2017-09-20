@@ -9,6 +9,11 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+<a class="btn btn-success" href="@Url.Action("TicketScreen","Tickets", new {functionType = "Consultants" })">Consultants</a>
+<a class="btn btn-success" href="@Url.Action("TicketScreen","Tickets", new {functionType = "Enquiries" })">Enquiries</a>
+<a class="btn btn-success" href="@Url.Action("TicketScreen","Tickets", new {functionType = "Tellers" })">Tellers</a>
+
 <table class="table">
     <tr>
         <th>
@@ -28,28 +33,49 @@
         </th>
         <th></th>
     </tr>
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FunctionType.FunctionName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TicketNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateTimeIssued)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateTimeHelped)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateTimeEnd)
-        </td>
-        <td>
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FunctionType.FunctionName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTimeIssued)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTimeHelped)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTimeEnd)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+            <td>
+                <input type="button" class="btn btn-success" value="Print" id="print" onclick="Test(@Html.Raw(item.TicketNumber),'@(item.FunctionType.FunctionName)');" />
 
-</table>
+            </td>
+        </tr>
+    }
+
+
+
+
+<script>
+
+        var Test = function (number, category) {
+            var w = window.open();
+
+            var content = "<html><head><title>Q's ticket system</title></head><body><h1 style='text-align:center; font-size:3em';>" + category + "</h1>"
+                +"<h1 style='font-size:9em; text-align:center'>"+number+"</h1>"+"</body></html>"
+            w.document.write(content);
+            w.print();
+            w.close();
+        };
+
+</script>
+

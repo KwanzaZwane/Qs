@@ -71,7 +71,7 @@ namespace Qs.Controllers
                 db.Tickets.Add(ticket);
                 db.SaveChanges();
                 TempData["success"] = "New Ticket created!";
-                return RedirectToAction("Index");
+                return RedirectToAction("TicketOptions", new { ticket = ticket });
             }
             TempData["error"] = "Error creating Ticket!";
 
@@ -166,9 +166,57 @@ namespace Qs.Controllers
 
         }
 
-        public ActionResult TicketScreen()
+        public ActionResult TicketScreen(string functionType)
         {
+            ViewBag.FunctionType = functionType;
+
             return View();
         }
+
+        [HttpGet]
+        public JsonResult getTicketsForQueue(string functionType)
+        {
+            var currentBranch = User.Identity.GetUserId();
+            DateTime Now = DateTime.Now;
+
+            var ticketsInQueue = db.Tickets.Where(m => m.BranchId == currentBranch && m.DateTimeIssued.Day == Now.Day && m.DateTimeIssued.Month == Now.Month && m.DateTimeIssued.Year == Now.Year && m.DateTimeHelped == null && m.DateTimeEnd == null && m.FunctionType.FunctionName == functionType).Select(p => new { Id = p.Id, TicketNumber = p.TicketNumber }).Take(5);
+
+            return Json(new { result = ticketsInQueue }, JsonRequestBehavior.AllowGet);
+
+        }
+
+        [HttpGet]
+        public JsonResult getTicketForHelped(string functionType)
+        {
+            var currentBranch = User.Identity.GetUserId();
+            DateTime Now = DateTime.Now;
+
+            var ticketsInHelped = db.Tickets.Where(m => m.BranchId == currentBranch && m.DateTimeIssued.Day == Now.Day && m.DateTimeIssued.Month == Now.Month && m.DateTimeIssued.Year == Now.Year && m.DateTimeHelped != null && m.DateTimeEnd == null && m.FunctionType.FunctionName == functionType).Select(p => new { Id = p.Id, TicketNumber = p.TicketNumber });
+
+            return Json(new { result = ticketsInHelped }, JsonRequestBehavior.AllowGet);
+
+        }
+
+
+        public ActionResult TicketOptions(Ticket ticket)
+        {
+
+
+
+            return View(ticket);
+        }
+
+        //[HttpGet]
+        //public JsonResult clearTicketsNotServed(string Type)
+        //{
+        //    var currentBranch = User.Identity.GetUserId();
+        //    DateTime Now = DateTime.Now;
+
+        //    var ticketsInHelped = db.Tickets.Where(m => m.BranchId == currentBranch && m.DateTimeIssued.Day == Now.Day && m.DateTimeIssued.Month == Now.Month && m.DateTimeIssued.Year == Now.Year && m.DateTimeHelped != null && m.DateTimeEnd == null && m.FunctionType.FunctionName == Type);
+
+        //    return Json(new { result = ticketsInHelped }, JsonRequestBehavior.AllowGet);
+
+        //}
+
     }
 }
