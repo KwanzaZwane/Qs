@@ -71,7 +71,7 @@ namespace Qs.Controllers
                 db.Tickets.Add(ticket);
                 db.SaveChanges();
                 TempData["success"] = "New Ticket created!";
-                return RedirectToAction("TicketOptions", new { ticket = ticket });
+                return RedirectToAction("TicketOptions", new { id = ticket.Id });
             }
             TempData["error"] = "Error creating Ticket!";
 
@@ -198,10 +198,10 @@ namespace Qs.Controllers
         }
 
 
-        public ActionResult TicketOptions(Ticket ticket)
+        public ActionResult TicketOptions(int id)
         {
 
-
+            Ticket ticket = db.Tickets.Find(id);
 
             return View(ticket);
         }
