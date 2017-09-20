@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=SQL6003.myASP.NET;Initial Catalog=DB_A2A1E8_QsDb;User Id=DB_A2A1E8_QsDb_admin;Password=Hackathon1" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\ABSA391\\Documents\\Hackathon\\Qs\\Qs\\Qs\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="QsContext-Web.config Connection String" description="QsContext Connection String used in web.config by the application to access the database." defaultValue="data source=sql6003.myasp.net;initial catalog=DB_A2A1E8_QsDb;user id=DB_A2A1E8_QsDb_admin;password=Hackathon1;App=EntityFramework" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\ABSA391\\Documents\\Hackathon\\Qs\\Qs\\Qs\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='QsContext']/@connectionString" />
+  </parameter>
+</parameters>
