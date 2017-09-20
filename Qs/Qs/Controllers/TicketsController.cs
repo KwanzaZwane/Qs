@@ -151,8 +151,6 @@ namespace Qs.Controllers
 
         public int getNextTicketNumber(string BranchId )
         {
-            
-
             DateTime Now = DateTime.Now;
 
             var latestTicket = db.Tickets.Where(m => m.BranchId == BranchId && m.DateTimeIssued.Day == Now.Day && m.DateTimeIssued.Month == Now.Month && m.DateTimeIssued.Year == Now.Year).OrderByDescending(o => o.TicketNumber).FirstOrDefault();
@@ -169,6 +167,11 @@ namespace Qs.Controllers
         public ActionResult TicketScreen()
         {
             return View();
+        }
+
+        public void Test()
+        {
+            
         }
     }
 }
