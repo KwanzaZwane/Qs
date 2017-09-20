@@ -67,7 +67,9 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default" id="save" style="visibility:hidden"/>
+                <input type="button" value="Accept" class="btn btn-success" id="btnAccept" onclick="acceptDate()"/>
+                <input type="button" value="Close" class="btn btn-danger" id="btnClose" onclick="closeDate()"/>
             </div>
         </div>
     </div>
@@ -80,3 +82,23 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+<script>
+
+    var acceptDate = function () {
+ 
+            var date = new Date().toDateString();
+            var time = new Date().toLocaleTimeString();
+            var dateTime = date +" "+ time;
+            document.getElementById("DateTimeHelped").value = dateTime;
+            document.getElementById("save").click();
+    }
+    var closeDate = function () {
+
+            var date = new Date().toDateString();
+            var time = new Date().toLocaleTimeString();
+            var dateTime = date + " " + time;
+            document.getElementById("DateTimeEnd").value = dateTime;
+            document.getElementById("save").click();
+    }
+</script>
