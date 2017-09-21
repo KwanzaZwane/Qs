@@ -1,0 +1,206 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1>Analytics based on Q's</h1>
+
+<!--Load the AJAX API-->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+
+    // Load the Visualization API and the controls package.
+    google.charts.load('current', { 'packages': ['corechart', 'controls'] });
+
+    // Set a callback to run when the Google Visualization API is loaded.
+    google.charts.setOnLoadCallback(drawDashboard);
+
+    // Callback that creates and populates a data table,
+    // instantiates a dashboard, a range slider and a pie chart,
+    // passes in the data and draws it.
+    function drawDashboard() {
+
+        // Create our data table.
+        var data = google.visualization.arrayToDataTable([
+            ['Name', 'Number of people per branch'],
+            ['Absa Branch, Sanlam Centre', 5],
+            ['Absa Branch, Ten Sixty Six', 7],
+            ['Absa Branch, Volkskas Building', 3],
+            ['Absa Branch, Fresh Produce Market', 2],
+            ['Absa Branch, Braamfontein, JD House', 6],
+            ['Absa Branch, University of Johannesburg, RAU Campus, Shop 27', 1],
+            ['Absa Branch', 8]
+        ]);
+
+        // Create a dashboard.
+        var dashboard = new google.visualization.Dashboard(
+            document.getElementById('dashboard_div'));
+
+        // Create a range slider, passing some options
+        var donutRangeSlider = new google.visualization.ControlWrapper({
+            'controlType': 'NumberRangeFilter',
+            'containerId': 'filter_div',
+            'options': {
+                'filterColumnLabel': 'Number of people per branch'
+            }
+        });
+
+        // Create a pie chart, passing some options
+        var pieChart = new google.visualization.ChartWrapper({
+            'chartType': 'PieChart',
+            'containerId': 'chart_div',
+            'options': {
+                'width': 800,
+                'height': 800,
+                'pieSliceText': 'value',
+                'legend': 'right',
+                'is3D': true
+            }
+        });
+
+        // Establish dependencies, declaring that 'filter' drives 'pieChart',
+        // so that the pie chart will only display entries that are let through
+        // given the chosen slider range.
+        dashboard.bind(donutRangeSlider, pieChart);
+
+        // Draw the dashboard.
+        dashboard.draw(data);
+    }
+</script>
+
+<!--Div that will hold the dashboard-->
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div id="dashboard_div">
+            <!--Divs that will hold each control and chart-->
+            <div id="filter_div"></div>
+            <div id="chart_div"></div>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div id="chart1_div"></div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div id="chart2_div"></div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div id="chart3_div"></div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data1 = new google.visualization.DataTable();
+        data1.addColumn('string', 'Topping');
+        data1.addColumn('number', 'Time in minutes');
+        data1.addRows([
+          ['Tellers', 5],
+          ['Consultants', 3],
+          ['Enquiries', 3],
+
+        ]);
+
+        // Set chart options
+        var options1 = {'title':'Average waiting time per line',
+            'width': 1000,
+            'is3D': true,
+            'animation': { duration: 1000, easing: 'out' },
+            'height': 500
+        };
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+        data.addRows([
+            ['Tellers', 2],
+            ['Consultants', 4],
+            ['Enquiries', 3],
+
+        ]);
+
+        // Set chart options
+        var options = {
+
+            'title': 'Average number of people per branch (Daily)',
+            'width': 1000,
+            'is3D': true,
+            'height': 500
+        };
+
+        // Create the data table.
+        var data2 = new google.visualization.DataTable();
+        data2.addColumn('string', 'Topping');
+        data2.addColumn('number', 'Time in minutes');
+        data2.addRows([
+            ['Tellers', 3],
+            ['Consultants', 1],
+            ['Enquiries', 1],
+
+        ]);
+
+        // Set chart options
+        var options2 = {
+            'title': 'Average time to close a ticket',
+            'width': 1000,
+            'is3D': true,
+            'height': 500
+
+        };
+        // Create the data table.
+        var data3 = new google.visualization.DataTable();
+        data3.addColumn('string', 'Topping');
+        data3.addColumn('number', 'Cancelled tickets');
+        data3.addRows([
+            ['Tellers', 3],
+            ['Consultants', 1],
+            ['Enquiries', 1],
+
+        ]);
+
+        // Set chart options
+        var options3 = {
+            'title': 'Number of cancelled tickets',
+            'width': 1000,
+            'is3D': true,
+            colors: ['#e0440e'],
+            'height': 400
+        };
+
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+        var chart1 = new google.visualization.BarChart(document.getElementById('chart1_div'));
+        chart1.draw(data1, options1);
+        var chart2 = new google.visualization.ComboChart(document.getElementById('chart2_div'));
+        chart2.draw(data2, options2);
+        var chart3 = new google.visualization.AreaChart(document.getElementById('chart3_div'));
+        chart3.draw(data3, options3);
+
+      }
+</script>
+
