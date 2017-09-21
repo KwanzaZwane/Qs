@@ -10,9 +10,11 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
-<a class="btn btn-success" href="@Url.Action("TicketScreen","Tickets", new {functionType = "Consultants" })">Consultants</a>
-<a class="btn btn-success" href="@Url.Action("TicketScreen","Tickets", new {functionType = "Enquiries" })">Enquiries</a>
-<a class="btn btn-success" href="@Url.Action("TicketScreen","Tickets", new {functionType = "Tellers" })">Tellers</a>
+<div class="pull-right">
+    <a class="btn btn-success" href="@Url.Action("TicketScreen","Tickets", new {functionType = "Consultants" })">Consultants</a>
+    <a class="btn btn-success" href="@Url.Action("TicketScreen","Tickets", new {functionType = "Enquiries" })">Enquiries</a>
+    <a class="btn btn-success" href="@Url.Action("TicketScreen","Tickets", new {functionType = "Tellers" })">Tellers</a>
+</div>
 
 <table class="table">
     <tr>
@@ -52,6 +54,7 @@
                 @Html.DisplayFor(modelItem => item.DateTimeEnd)
             </td>
             <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id })
                 @Html.ActionLink("Details", "Details", new { id = item.Id }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.Id })
             </td>
@@ -59,6 +62,7 @@
         </tr>
     }
 
+</table>
 
 
 
