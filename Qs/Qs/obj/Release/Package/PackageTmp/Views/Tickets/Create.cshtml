@@ -7,41 +7,43 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal" >
+
+    <div class="form-horizontal">
         <h4>Ticket</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model=>model.BranchId)
+        @Html.HiddenFor(model => model.BranchId)
 
         <div class="form-group">
             <div class="col-md-20">
-   
+
+
+                <label class="rb2">
+                    @Html.RadioButtonFor(model => model.FunctionTypeId, 2, new { @class = "rb1" })
+                    <img src="~/Content/Images/Enquire.png" onclick="myFunc()" />
+                </label>
+
+
+                <label class="rb2">
+                    @Html.RadioButtonFor(model => model.FunctionTypeId, 3, new { @class = "rb1" })
+                    <img src="~/Content/Images/See_a_teller.png" onclick="myFunc()" />
+                </label>
+
                 <label class="rb2">
                     @Html.RadioButtonFor(model => model.FunctionTypeId, 1, new { @class = "rb1" })
                     <img src='~/Content/Images/See%20a%20Consultant.png' onclick="myFunc()" />
                 </label>
 
-                <label class="rb2">
-                    @Html.RadioButtonFor(model => model.FunctionTypeId, 2, new { @class = "rb1"})
-                    <img src="~/Content/Images/Enquire.png" onclick="myFunc()" />
-                </label>
-
-                <label class="rb2">
-                    @Html.RadioButtonFor(model => model.FunctionTypeId, 3, new { @class = "rb1"})
-                    <img src="~/Content/Images/See_a_teller.png" onclick="myFunc()"  />
-                </label>
-
-                    @Html.ValidationMessageFor(model => model.FunctionTypeId, "", new { @class = "text-danger" })
-</div>
+                @Html.ValidationMessageFor(model => model.FunctionTypeId, "", new { @class = "text-danger" })
+            </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create Ticket" class="btn btn-primary" id="btnCreate"/>
+                <input type="submit" value="Create Ticket" class="btn btn-primary" id="btnCreate" />
             </div>
         </div>
     </div>
@@ -57,31 +59,34 @@
 
 <script>
     function myFunc()
-    {   
-        document.getElementById("btnCreate").click();   
+    {
+        document.getElementById("btnCreate").click();
     }
-    </script>
+</script>
 
 <style>
-
-    img:hover{
-        background-color:aliceblue;
-        
+    img:hover {
+        background-color: #727972;
+        border: 2px solid #727972;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
     }
 
-    label{
-        cursor:pointer;
+    label {
+        cursor: pointer;
     }
 
-    #btnCreate{
-        visibility:hidden;
-    } 
-    
-     .rb1 {
+    #btnCreate {
+        visibility: hidden;
+    }
+
+    .rb1 {
         opacity: 0;
     }
 
-     .rb2{
-         border-color:red;
-     }
+    .rb2 {
+        border-color: red;
+    }
 </style>
+
