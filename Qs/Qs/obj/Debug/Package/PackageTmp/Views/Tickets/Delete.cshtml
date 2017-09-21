@@ -1,0 +1,72 @@
+﻿@model Qs.Models.Ticket
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Ticket</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AspNetUser.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FunctionType.FunctionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FunctionType.FunctionName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TicketNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TicketNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateTimeIssued)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateTimeIssued)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateTimeHelped)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateTimeHelped)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateTimeEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateTimeEnd)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

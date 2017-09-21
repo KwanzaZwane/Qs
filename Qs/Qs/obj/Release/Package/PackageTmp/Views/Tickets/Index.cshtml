@@ -16,55 +16,166 @@
     <a class="btn btn-success" href="@Url.Action("TicketScreen","Tickets", new {functionType = "Tellers" })">Tellers</a>
 </div>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.FunctionType.FunctionName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TicketNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateTimeIssued)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateTimeHelped)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateTimeEnd)
-        </th>
-        <th></th>
-    </tr>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FunctionType.FunctionName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TicketNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateTimeIssued)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateTimeHelped)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateTimeEnd)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id })
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
+<ul class="nav nav-tabs">
+    <li class="nav active"><a href="#Enquiries" data-toggle="tab">Enquiries</a></li>
+    <li class="nav"><a href="#Consultants" data-toggle="tab">Consultants</a></li>
+    <li class="nav"><a href="#Tellers" data-toggle="tab">Tellers</a></li>
+</ul>
 
-        </tr>
-    }
+<div class="tab-content">
+    <div class="tab-pane fade in active" id="Enquiries">
+        <div class="dataTable_wrapper">
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FunctionType.FunctionName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TicketNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DateTimeIssued)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DateTimeHelped)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DateTimeEnd)
+                    </th>
+                    <th></th>
+                </tr>
+                @foreach (var item in Model.Where(m => m.FunctionType.FunctionName == "Enquiries"))
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FunctionType.FunctionName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TicketNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateTimeIssued)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateTimeHelped)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateTimeEnd)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </td>
 
-</table>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+
+    <div class="tab-pane fade in" id="Consultants">
+        <div class="dataTable_wrapper">
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FunctionType.FunctionName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TicketNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DateTimeIssued)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DateTimeHelped)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DateTimeEnd)
+                    </th>
+                    <th></th>
+                </tr>
+                @foreach (var item in Model.Where(m => m.FunctionType.FunctionName == "Consultants"))
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FunctionType.FunctionName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TicketNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateTimeIssued)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateTimeHelped)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateTimeEnd)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </td>
+
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+    <div class="tab-pane fade in" id="Tellers">
+        <div class="dataTable_wrapper">
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FunctionType.FunctionName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TicketNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DateTimeIssued)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DateTimeHelped)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DateTimeEnd)
+                    </th>
+                    <th></th>
+                </tr>
+                @foreach (var item in Model.Where(m => m.FunctionType.FunctionName == "Tellers"))
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FunctionType.FunctionName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TicketNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateTimeIssued)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateTimeHelped)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateTimeEnd)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </td>
+
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
 
 
-
+</div>
 
 

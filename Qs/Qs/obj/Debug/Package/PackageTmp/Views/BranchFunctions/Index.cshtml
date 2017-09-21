@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Qs.Models.FunctionType>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Add Function", "Create",new { id = ViewBag.BranchId})
+</p>
+
+<div class="dataTable_wrapper">
+    <table class="display responsive table table-bordered table-hover " id="dataTables-example">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FunctionName)
+                </th>
+                <th></th>
+            </tr>
+            </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FunctionName)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Delete", "Delete", new {BranchId = ViewBag.BranchId, FunctionId = item.Id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

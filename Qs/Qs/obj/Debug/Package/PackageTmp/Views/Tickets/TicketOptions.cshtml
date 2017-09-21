@@ -1,0 +1,51 @@
+﻿@model Qs.Models.Ticket
+
+@{
+    ViewBag.Title = "TicketOptions";
+}
+
+<h2>TicketOptions</h2>
+
+<div>
+    <h4>Ticket</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FunctionType.FunctionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FunctionType.FunctionName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TicketNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TicketNumber)
+        </dd>
+    </dl>
+
+    <input type="button" class="btn btn-success" value="Print" id="print" onclick="Test(@Html.Raw(Model.TicketNumber),'@(Model.FunctionType.FunctionName)');" />
+
+    <input type="button" class="btn btn-success" value="Sms" id="sms" onclick="Test(@Html.Raw(Model.TicketNumber),'@(Model.FunctionType.FunctionName)');" />
+</div>
+
+@section scripts{
+    <script>
+
+        var Test = function (number, category) {
+            var w = window.open();
+
+            var content = "<html><head><title>Q's ticket system</title></head><body><h1 style='text-align:center; font-size:3em';>" + category + "</h1>"
+                +"<h1 style='font-size:9em; text-align:center'>"+number+"</h1>"+"</body></html>"
+            w.document.write(content);
+            w.print();
+            w.close();
+
+            window.location.href = "../Create";
+        };
+
+    </script>
+}

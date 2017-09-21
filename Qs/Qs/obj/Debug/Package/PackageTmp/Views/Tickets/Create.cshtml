@@ -1,0 +1,87 @@
+﻿@model Qs.Models.Ticket
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal" >
+        <h4>Ticket</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model=>model.BranchId)
+
+        <div class="form-group">
+            <div class="col-md-20">
+   
+                <label class="rb2">
+                    @Html.RadioButtonFor(model => model.FunctionTypeId, 1, new { @class = "rb1" })
+                    <img src='~/Content/Images/See%20a%20Consultant.png' onclick="myFunc()" />
+                </label>
+
+                <label class="rb2">
+                    @Html.RadioButtonFor(model => model.FunctionTypeId, 2, new { @class = "rb1"})
+                    <img src="~/Content/Images/Enquire.png" onclick="myFunc()" />
+                </label>
+
+                <label class="rb2">
+                    @Html.RadioButtonFor(model => model.FunctionTypeId, 3, new { @class = "rb1"})
+                    <img src="~/Content/Images/See_a_teller.png" onclick="myFunc()"  />
+                </label>
+
+                    @Html.ValidationMessageFor(model => model.FunctionTypeId, "", new { @class = "text-danger" })
+</div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create Ticket" class="btn btn-primary" id="btnCreate"/>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script>
+    function myFunc()
+    {   
+        document.getElementById("btnCreate").click();   
+    }
+    </script>
+
+<style>
+
+    img:hover{
+        background-color:aliceblue;
+        
+    }
+
+    label{
+        cursor:pointer;
+    }
+
+    #btnCreate{
+        visibility:hidden;
+    } 
+    
+     .rb1 {
+        opacity: 0;
+    }
+
+     .rb2{
+         border-color:red;
+     }
+</style>
